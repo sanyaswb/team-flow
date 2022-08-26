@@ -1,0 +1,77 @@
+<nav class="nav @@classList" id="headerNavigation">
+	@@include('./logo.html', {"classList": "logo_normal nav__logo"})
+
+	<ul class="nav__list">
+		<li class="nav__item nav__item_non-empty">
+			<a class="nav__link" href="#product">Product</a>
+			<ul class="nav__dropdown">
+				<li>
+					<a href="#partners">Partners</a>
+				</li>
+				<li>
+					<a href="#affiliate">Affiliate</a>
+				</li>
+				<li>
+					<a href="#integrations">Integrations</a>
+				</li>
+				<li>
+					<a href="#developers">Developers</a>
+				</li>
+				<li>
+					<a href="#students">Students</a>
+				</li>
+				<li>
+					<a href="#workOS">Work OS</a>
+				</li>
+			</ul>
+		</li>
+		<li class="nav__item nav__item_non-empty">
+			<a class="nav__link" href="#solution">Solution</a>
+			<ul class="nav__dropdown">
+				<li>
+					<a href="#projectManagement">Project Management</a>
+				</li>
+				<li>
+					<a href="#marketing">Marketing</a>
+				</li>
+				<li>
+					<a href="#crmAndSales">CRM and Sales</a>
+				</li>
+				<li>
+					<a href="#softwareDevelopment">Software Development</a>
+				</li>
+				<li>
+					<a href="#constructions">Constructions</a>
+				</li>
+				<li>
+					<a href="#creativeProduction">Creative Production</a>
+				</li>
+				<li>
+					<a href="#remoteWork">Remote Work</a>
+				</li>
+				<li>
+					<a href="#HR">HR</a>
+				</li>
+				<li>
+					<a href="#IT">IT</a>
+				</li>
+				<li>
+					<a href="#seeMoreSolutions">See More Solutions</a>
+				</li>
+			</ul>
+		</li>
+		<li class="nav__item">
+			<a class="nav__link" href="#enterprise">Enterprise</a>
+		</li>
+		<li class="nav__item">
+			<a class="nav__link" href="#pricing">Pricing</a>
+		</li>
+	</ul>
+
+	<div class="nav__login">
+		<button class="nav__login-button">Sign In</button>
+		<button class="nav__login-button">Sign Up</button>
+	</div>
+
+	@@include('./burger.html', {"classList": "nav__burger"})
+</nav>

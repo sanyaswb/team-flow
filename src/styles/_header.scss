@@ -1,0 +1,618 @@
+@import "styleLib/mixins";
+
+.header {
+	width: 100%;
+	min-height: 980px;
+	position: relative;
+	display: grid;
+	flex-direction: column;
+	grid-template-areas:
+	"nav        nav"
+	"content  aside";
+	grid-template-columns: 650px 1fr;
+	grid-column-gap: 100px;
+
+	@include wrapper(75px, $padding-desktop-xl, 200px, $padding-desktop-xl, $desktop-xl-width);
+
+	@include desktop-l {
+		min-height: 900px;
+		grid-template-columns: 630px 1fr;
+		grid-column-gap: 20px;
+
+		@include wrapper(75px, $padding-desktop-l, 120px, $padding-desktop-l);
+	}
+
+	@include desktop-m {
+		min-height: 695px;
+
+		@include wrapper(60px, $padding-desktop-m, 60px, $padding-desktop-m);
+	}
+
+	@include desktop-s {
+		grid-template-areas:
+		"nav          nav"
+		"content        .";
+		grid-template-columns: 60% 1fr;
+		grid-column-gap: 0;
+	}
+
+	@include tablet {
+		grid-template-columns: 100% 0;
+	}
+
+	@include mobile-l {
+		@include wrapper(60px, $padding-mobile-l, 30px, $padding-mobile-l);
+
+		grid-template-rows: max-content 1fr;
+		min-height: 600px;
+	}
+
+	@include mobile-p {
+		@include wrapper(30px, $padding-mobile-p, 80px, $padding-mobile-p);
+
+		min-height: unset;
+	}
+
+	&__background {
+		position: absolute;
+		left: 15px;
+		top: 15px;
+		overflow: hidden;
+		width: calc(100% - 30px);
+		height: calc(100% - 30px);
+		background-color: #FAFAFF;
+
+		@include mobile-p {
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+		}
+
+		div {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 80%;
+			height: 100%;
+			transform: skewX(-15deg) translateX(-25%);
+			background-color: #4b4aef;
+
+			@include desktop-xl {
+				width: calc(85% - (100% - #{$desktop-xl-width}) / 4);
+			}
+
+			@include desktop-s {
+				width: 100%;
+				transform: none;
+			}
+
+			.header__wave:nth-of-type(1) {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 80%;
+
+				@include desktop-xl {
+					transform: translateY(calc(-1 * (100vw - #{$desktop-xl-width}) / 16));
+				}
+			}
+
+			.header__wave:nth-of-type(2) {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 80%;
+				transform: translateX(-50%);
+
+				@include desktop-xl {
+					transform: translateX(-50%) translateY(calc(-1 * (100vw - #{$desktop-xl-width}) / 16));
+				}
+			}
+
+			.header__wave:nth-of-type(3) {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 110%;
+				transform: rotate(4deg) translateY(40%);
+
+				@include desktop-xl {
+					transform: rotate(4deg) translateY(calc(40% + (100vw - #{$desktop-xl-width}) / 16));
+				}
+			}
+
+			.header__wave:nth-of-type(4) {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 125%;
+				transform: rotate(4deg) translateY(35%);
+
+				@include desktop-xl {
+					transform: rotate(4deg) translateY(calc(35% + (100vw - #{$desktop-xl-width}) / 16));
+				}
+			}
+		}
+	}
+
+	&__nav {
+		position: relative;
+		z-index: 4;
+		display: grid;
+		grid-template-columns: 15% 50% 1fr;
+		width: 100%;
+		margin-bottom: 200px;
+		grid-area: nav;
+
+		@include desktop-l {
+			margin-bottom: 120px;
+			grid-template-columns: 15% 45% 1fr;
+			grid-column-gap: 30px;
+		}
+
+		@include desktop-xl {
+			grid-template-columns: 10% 47% 1fr;
+		}
+
+		@include desktop-m {
+			margin-bottom: 60px;
+			grid-template-areas:
+			"logo  login"
+			"menu   menu";
+			grid-template-columns: 60% 1fr;
+			width: 100%;
+		}
+
+		@include desktop-s {
+			grid-template-columns: 40% 1fr;
+		}
+
+		@include mobile-l {
+			grid-template-areas:
+			"logo logo";
+		}
+
+		.nav__logo {
+			@include desktop-m {
+				grid-area: logo;
+			}
+		}
+
+		.nav__list {
+			justify-self: end;
+
+			@include desktop-m {
+				grid-area: menu;
+				justify-self: start;
+			}
+		}
+
+		.nav__login {
+			justify-self: end;
+			align-self: center;
+
+			@include desktop-m {
+				grid-area: login;
+			}
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 3;
+		width: 100%;
+		grid-area: content;
+	}
+
+	&__greetings {
+		padding: 11px 34px 11px 8px;
+		background: #fff;
+		border-radius: 10px;
+		box-shadow: 2px 2px 12px rgba(38, 40, 82, 0.1);
+		width: max-content;
+		font-family: 'Nunito Sans', sans-serif;
+		font-weight: 400;
+		font-size: 20px;
+		color: #606060;
+		margin-bottom: 30px;
+		position: relative;
+
+		@include mobile-p {
+			font-size: 18px;
+		};
+	}
+
+	&__title {
+		font-family: 'Nunito Sans', sans-serif;
+		font-weight: 800;
+		font-size: 64px;
+		line-height: 125%;
+		color: #fff;
+		width: min-content;
+		letter-spacing: 2px;
+		margin-bottom: 40px;
+		position: relative;
+
+		@include tablet {
+			font-size: 48px;
+		}
+
+		@include mobile-l {
+			font-size: 40px;
+		}
+
+		@include mobile-p {
+			font-size: 30px;
+			letter-spacing: 0.5px;
+		}
+
+		span {
+			@include no-wrap;
+		}
+
+		@include tablet {
+			max-width: 520px;
+		}
+	}
+
+	&__delimiter {
+		width: 65px;
+		height: 6px;
+		border-radius: 6px;
+		background: #3ADAD9;
+		border: none;
+		margin-bottom: 40px;
+		white-space: nowrap;
+	}
+
+	&__slogan {
+		font-family: 'Nunito Sans', sans-serif;
+		font-weight: 400;
+		font-size: 30px;
+		line-height: 160%;
+		max-width: 100%;
+		width: max-content;
+		color: #FFFFFF;
+		letter-spacing: 1px;
+		margin-bottom: 40px;
+		position: relative;
+
+		span {
+			@include no-wrap;
+		}
+
+		@include desktop-m {
+			margin-bottom: 0;
+		}
+
+		@include tablet {
+			max-width: 520px;
+		}
+
+		@include mobile-l {
+			font-size: 28px;
+			line-height: 130%;
+			max-width: 100%;
+		}
+
+		@include mobile-p {
+			font-size: 22px;
+			letter-spacing: 0;
+		}
+	}
+
+	&__button {
+		min-width: 230px;
+		min-height: 70px;
+		background: #FFCA1D;
+		font-family: 'Nunito Sans', sans-serif;
+		font-weight: 600;
+		font-size: 26px;
+		color: #2C2C2C;
+		border-radius: 10px;
+		padding: 20px 40px;
+		border: none;
+		cursor: pointer;
+
+		@include desktop-m {
+			display: none;
+		}
+	}
+
+	&__deco {
+		position: absolute;
+
+		&_first {
+			right: 0;
+			bottom: -60px;
+
+			@include mobile-l {
+				transform: scale(0.8);
+			}
+
+			@include mobile-p {
+				transform: scale(0.6);
+			}
+		}
+
+		&_second {
+			right: -72px;
+			top: -36px;
+
+			@include mobile-p {
+				right: -32px;
+			}
+		}
+
+		&_third {
+			right: 50px;
+			bottom: -10px;
+
+			@include mobile-l {
+				transform: scale(0.8);
+				bottom: -40px;
+			}
+		}
+
+		&_fourth {
+			right: -65px;
+			top: -50px;
+
+			@include mobile-l {
+				transform: scale(0.8);
+				right: -40px;
+			}
+		}
+	}
+
+	&__aside {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		z-index: 2;
+		grid-area: aside;
+		justify-self: end;
+
+		@include desktop-m {
+			align-self: center;
+		}
+
+		@include desktop-s {
+			display: none;
+		}
+	}
+
+	&__reviewer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 30px;
+
+		@include desktop-m {
+			gap: 20px;
+		}
+
+		.reviewer {
+			display: block;
+			flex-shrink: 0;
+			padding: 20px;
+			background: url("../assets/images/header/reviewer-circle.svg");
+			background-size: contain;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+			}
+
+			p {
+				position: absolute;
+				background: #fafafa;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-family: 'Nunito Sans', sans-serif;
+				font-weight: 600;
+			}
+		}
+
+		.comment {
+			width: 375px;
+			height: 168px;
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			flex-shrink: 0;
+
+			@include desktop-m {
+				width: 275px;
+				height: 123px;
+			}
+
+			.status {
+				padding: 5px;
+				border-radius: 3px;
+				font-family: 'Nunito Sans', sans-serif;
+				font-weight: 400;
+				font-size: 20px;
+				color: #fff;
+				width: max-content;
+				position: absolute;
+				right: 10px;
+
+				@include desktop-m {
+					font-size: 16px;
+				}
+
+				&_done {
+					background: #3ADAD9;
+				}
+
+				&_pending {
+					background: #FD9B79;
+				}
+			}
+
+			.name {
+				font-family: 'Nunito Sans', sans-serif;
+				font-weight: 600;
+				font-size: 20px;
+				color: #6C71A1;
+				margin-bottom: 5px;
+
+				@include desktop-m {
+					font-size: 16px;
+				}
+			}
+
+			.task {
+				font-family: 'Nunito Sans', sans-serif;
+				font-style: normal;
+				font-weight: 700;
+				font-size: 20px;
+				color: #2B3377;
+				margin-bottom: 10px;
+
+				@include desktop-m {
+					font-size: 16px;
+					margin-bottom: 5px;
+				}
+			}
+
+			.rank {
+				display: flex;
+				gap: 2px;
+
+				div {
+					width: 22px;
+					height: 22px;
+				}
+
+				&_4 {
+					div:nth-of-type(1),
+					div:nth-of-type(2),
+					div:nth-of-type(3),
+					div:nth-of-type(4) {
+						background: url("../assets/images/header/star_active.svg");
+					}
+
+					div:nth-of-type(5) {
+						background: url("../assets/images/header/star_inactive.svg");
+					}
+				}
+
+				&_5 {
+					div:nth-of-type(1),
+					div:nth-of-type(2),
+					div:nth-of-type(3),
+					div:nth-of-type(4),
+					div:nth-of-type(5) {
+						background: url("../assets/images/header/star_active.svg");
+					}
+				}
+			}
+		}
+
+		&_normal {
+			.reviewer {
+				order: 1;
+				width: 290px;
+				height: 290px;
+
+				@include desktop-l {
+					width: 223px;
+					height: 223px;
+					padding: 15px;
+				}
+
+				@include desktop-m {
+					width: 160px;
+					height: 160px;
+					padding: 8px;
+				}
+
+				p {
+					left: -25%;
+					bottom: 30px;
+					width: 200px;
+					height: 60px;
+					border-radius: 35px;
+					font-size: 30px;
+
+					@include desktop-l {
+						left: -20px;
+						width: 90px;
+						height: 25px;
+						border-radius: 20px;
+						font-size: 12px;
+					}
+				}
+			}
+
+			.comment {
+				order: 2;
+				padding: 25px 10px 15px 10px;
+				background: url("../assets/images/header/comment-normal.png");
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: top;
+
+				@include desktop-m {
+					padding: 15px 10px 15px 10px;
+				}
+
+				.status {
+					top: 10px;
+				}
+			}
+		}
+
+		&_reversed {
+			.reviewer {
+				order: 2;
+
+				width: 223px;
+				height: 223px;
+
+				@include desktop-l {
+					padding: 15px;
+				}
+
+				@include desktop-m {
+					width: 160px;
+					height: 160px;
+					padding: 8px;
+				}
+
+				p {
+					top: 32%;
+					right: -20px;
+					width: 90px;
+					height: 25px;
+					border-radius: 20px;
+					font-size: 12px;
+					color: #279E73;
+				}
+			}
+
+			.comment {
+				order: 1;
+				padding: 35px 10px 25px 10px;
+				background: url("../assets/images/header/comment-reverse.png");
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: top;
+
+				@include desktop-m {
+					padding: 25px 10px 25px 10px;
+				}
+
+				.status {
+					top: 20px;
+				}
+			}
+		}
+	}
+}

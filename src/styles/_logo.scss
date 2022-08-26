@@ -1,0 +1,65 @@
+@import "styleLib/mixins";
+
+.logo {
+	display: flex;
+	align-items: center;
+
+	&__image {
+		width: 35px;
+		height: 35px;
+
+		@include mobile-p {
+			width: 25px;
+			height: 25px;
+		}
+	}
+
+	&__text {
+		margin-left: 10px;
+
+		@include mobile-p {
+			margin-left: 6px;
+		}
+	}
+
+	&__text > span {
+		height: 45px;
+		line-height: 45px;
+		font-family: 'Poppins', sans-serif;
+		font-size: 30px;
+		font-weight: 600;
+		color: #fff;
+
+		@include mobile-p {
+			font-size: 24px;
+		}
+	}
+
+	&_normal {
+		.logo__image_expensive {
+			display: none;
+		}
+
+		.logo__text-first {
+			color: #fff;
+		}
+
+		.logo__text-second {
+			color: #fff;
+		}
+	}
+
+	&_expensive {
+		.logo__image_normal {
+			display: none;
+		}
+
+		.logo__text-first {
+			color: #5565F0;
+		}
+
+		.logo__text-second {
+			color: #EB801D;
+		}
+	}
+}

@@ -1,0 +1,39 @@
+<div class="burger @@classList" id="burgerMenu">
+	<button class="burger__toggle burger__toggle_open" id="burgerBtnOpen">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</button>
+	<button class="burger__toggle burger__toggle_close burger__toggle_hidden" id="burgerBtnClose">
+		<span></span>
+		<span></span>
+	</button>
+	<div class="burger__menu">
+		@@include('./logo.html', {"classList": "burger__logo logo_expensive"})
+		<label class="burger__search">
+			<img src="../assets/images/nav/search-icon.svg" class="search-icon" alt="search">
+			<input type="text" id="burgerSearch" />
+			<button class="burger__search-button">
+				<img src="../assets/images/nav/arrow-icon.svg" class="arrow-icon" alt="arrow">
+			</button>
+		</label>
+		<div class="burger__login">
+			<img src="../assets/images/nav/login-icon.svg" alt="login" class="burger__login-icon">
+			<div class="burger__login-buttons">
+				<button class="burger__login-button">Sign In</button>
+				<span></span>
+				<button class="burger__login-button">Sign Up</button>
+			</div>
+			<p class="burger__login-description">Login for get more options</p>
+		</div>
+		<div class="burger__block" id="burgerBlock">
+			<div class="burger__upper-section" id="burgerUpperSection">
+				<button id="burgerBtnBack">
+					<span></span>
+				</button>
+				<a id="burgerUpperLink"></a>
+			</div>
+		</div>
+	</div>
+</div>

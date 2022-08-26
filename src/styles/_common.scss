@@ -1,0 +1,19 @@
+body {
+	min-height: 200vh;
+}
+
+.cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba(255, 255, 255, .3);
+	transform: translateX(100%);
+	transition: transform 350ms ease-in-out;
+	z-index: 998;
+
+	&_active {
+		transform: translateX(0);
+	}
+}

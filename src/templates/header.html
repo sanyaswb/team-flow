@@ -1,0 +1,70 @@
+<header class="header">
+	<div class="header__background">
+		<div>
+			<img class="header__wave" src="../assets/images/header/wave-top.svg" alt="deco">
+			<img class="header__wave" src="../assets/images/header/wave-top.svg" alt="deco">
+			<img class="header__wave" src="../assets/images/header/wave-bottom.svg" alt="deco">
+			<img class="header__wave" src="../assets/images/header/wave-bottom.svg" alt="deco">
+		</div>
+	</div>
+
+	@@include('./nav.html', {"classList": "header__nav"})
+
+	<div class="header__content">
+		<p class="header__greetings">
+			👋 Welcome to TeamFlow
+			<img class="header__deco header__deco_second" src="../assets/images/header/deco_2.svg" alt="deco">
+		</p>
+		<h1 class="header__title">
+			<img class="header__deco header__deco_fourth" src="../assets/images/header/deco_4.svg" alt="deco">
+			<span>Work the way that</span> <span> works for you</span>
+			<img class="header__deco header__deco_first" src="../assets/images/header/deco_1.svg" alt="deco">
+		</h1>
+		<hr class="header__delimiter">
+		<p class="header__slogan">
+			<span>Create, Build, Collaborate</span> and ship products <span>very faster</span>
+			<img class="header__deco header__deco_third" src="../assets/images/header/deco_3.svg" alt="deco">
+		</p>
+		<button class="header__button">Get Started</button>
+	</div>
+
+	<aside class="header__aside">
+		<div class="header__reviewer header__reviewer_normal">
+			<div class="reviewer">
+				<img src="../assets/images/header/lucy.png" alt="Lucy">
+				<p>Lucy</p>
+			</div>
+			<div class="comment">
+				<div class="status status_done">Done</div>
+				<p class="name">Lucy Niana</p>
+				<p class="task">Develop Communication Plan</p>
+				<div class="rank rank_4">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="header__reviewer header__reviewer_reversed">
+			<div class="reviewer">
+				<img src="../assets/images/header/mark.png" alt="Mark">
+				<p>Mark</p>
+			</div>
+			<div class="comment">
+				<div class="status status_pending">Pending</div>
+				<p class="name">Mark Anderson</p>
+				<p class="task">Update Contract Agreement</p>
+				<div class="rank rank_5">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+	</aside>
+</header>

@@ -1,0 +1,73 @@
+@import "variables";
+
+@mixin desktop-xl {
+	@media (min-width: $desktop-xl-width) {
+		@content;
+	}
+}
+
+@mixin desktop-l {
+	@media (max-width: $desktop-l-width) {
+		@content;
+	}
+}
+
+@mixin desktop-m {
+	@media (max-width: $desktop-m-width) {
+		@content;
+	}
+}
+
+@mixin desktop-s {
+	@media (max-width: $desktop-s-width) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width: $tablet-width) {
+		@content;
+	}
+}
+
+@mixin mobile-l {
+	@media (max-width: $mobile-l-width) {
+		@content;
+	}
+}
+
+@mixin mobile-p {
+	@media (max-width: $mobile-p-width) {
+		@content;
+	}
+}
+
+@mixin mobile-l-height {
+	@media (max-height: $mobile-p-width) {
+		@content;
+	}
+}
+
+@mixin mobile-p-height {
+	@media (max-height: $mobile-l-width) {
+		@content;
+	}
+}
+
+@mixin wrapper($padding-top, $padding-right, $padding-bottom, $padding-left, $limit: $desktop-xl-width) {
+	padding: $padding-top $padding-right $padding-bottom $padding-left;
+
+	@media (min-width: calc(#{$limit} + 1px)) {
+		padding: $padding-top calc(#{$padding-right} + (100% - #{$limit}) / 2) $padding-bottom calc(#{$padding-left} + (100% - #{$limit}) / 2);
+	}
+}
+
+@mixin no-wrap {
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+	white-space: nowrap;
+}
