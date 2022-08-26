@@ -2,15 +2,14 @@
 import { v4 as getId } from 'uuid';
 
 // system
-import DEvents from '../system/events/d-events';
 import { DComponent } from '../system/entities/d-component';
 
 // interfaces
-import { TResolution } from '../system/interfaces/screen';
+import { THeightBreakPoint, TResolution, TWidthBreakPoint } from '../interfaces/screen';
+import { ILink } from '../interfaces/providers';
 
 // providers
-import NavigationProvider, { ILink } from '../providers/navigation-provider'
-import { getHeightBreakPoint, getWidthBreakPoint } from '../system/helpers/screen';
+import { navigationProvider, screenProvider } from '../providers/root-provider';
 
 interface IBlock {
 	id: string;
@@ -20,8 +19,6 @@ interface IBlock {
 }
 
 export class BurgerComponent extends DComponent {
-	private readonly navigationProvider = NavigationProvider;
-
 	private backBtn: HTMLButtonElement;
 	private openBtn: HTMLButtonElement;
 	private closeBtn: HTMLButtonElement;
@@ -33,7 +30,6 @@ export class BurgerComponent extends DComponent {
 
 	private opened: boolean = false;
 	private visible: boolean = true;
-	private resolution: TResolution = 'desktop';
 
 	private blocks: IBlock[] = [];
 
@@ -57,26 +53,32 @@ export class BurgerComponent extends DComponent {
 		this.back = this.back.bind(this);
 		this.open = this.open.bind(this);
 		this.close = this.close.bind(this);
-		this.resize = this.resize.bind(this);
-		this.scroll = this.scroll.bind(this);
+
+		this.onChangeResolution = this.onChangeResolution.bind(this);
+		this.onChangeScrollY = this.onChangeScrollY.bind(this);
+		this.onChangeWidthBreakPoint = this.onChangeWidthBreakPoint.bind(this);
+		this.onChangeHeightBreakPoint = this.onChangeHeightBreakPoint.bind(this);
+
+		const { resolution, scrollY } = screenProvider.state;
+
+		this.checkVisibility(resolution, scrollY);
+
 		this.normalLinkHandler = this.normalLinkHandler.bind(this);
 	}
 
-	public init() {
+	public init(): void {
 		this.setEvents();
-		this.resize();
-		this.scroll();
 		this.processMainLinks();
 	}
 
-	private processMainLinks() {
+	private processMainLinks(): void {
 		const mainListId = getId();
 
 		const list = document.createElement('ul');
 		list.className = 'burger__list';
 		list.id = mainListId;
 
-		for (const mainLink of this.navigationProvider.state.headerLinks) {
+		for (const mainLink of navigationProvider.state.headerLinks) {
 			const hasChild = mainLink.childLinks && mainLink.childLinks.length;
 
 			const item = document.createElement('li');
@@ -165,7 +167,7 @@ export class BurgerComponent extends DComponent {
 		});
 	}
 
-	private normalLinkHandler() {
+	private normalLinkHandler(): void {
 		this.closeBtn.click();
 	}
 
@@ -176,7 +178,7 @@ export class BurgerComponent extends DComponent {
 		}
 	}
 
-	private switchBlocks(id: string, mainLink: ILink | null = null) {
+	private switchBlocks(id: string, mainLink: ILink | null = null): void {
 		const currentBlock = this.blocks.find(block => block.active);
 		const newBlock = this.blocks.find(block => block.id === id);
 
@@ -204,15 +206,14 @@ export class BurgerComponent extends DComponent {
 		this.switchBlocks(block.id);
 	}
 
-	private open() {
+	private open(): void {
 		if (this.opened) {
 			return ;
 		}
 
 		this.menu.classList.add('burger_opened');
 
-		const widthBreakPoint = getWidthBreakPoint();
-		const heightBreakPoint = getHeightBreakPoint();
+		const { widthBreakPoint, heightBreakPoint } = screenProvider.state;
 
 		if (
 			widthBreakPoint === 'mobile-l' ||
@@ -225,18 +226,30 @@ export class BurgerComponent extends DComponent {
 		this.opened = true;
 	}
 
-	private close() {
+	private close(): void {
 		if (!this.opened) {
 			return ;
 		}
 
 		this.menu.classList.remove('burger_opened');
+
 		document.body.style.overflowY = 'auto';
 
 		this.opened = false;
 	}
 
-	private setVisibility(value: boolean) {
+	private checkVisibility(resolution: TResolution, scrollY: number): void {
+		switch (true) {
+			case resolution === 'mobile':
+			case scrollY > this.headerNavigation.offsetTop + this.headerNavigation.clientHeight:
+				this.setVisibility(true);
+				break;
+			default:
+				this.setVisibility(false);
+		}
+	}
+
+	private setVisibility(value: boolean): void {
 		if (value) {
 			this.menu.style.display = 'flex';
 		} else {
@@ -247,71 +260,60 @@ export class BurgerComponent extends DComponent {
 		this.visible = value;
 	}
 
-	private resize() {
-		const resolution = window.innerWidth >= 1025 ? 'desktop' : 'mobile';
+	private onChangeResolution(resolution: TResolution): void {
+		const { scrollY } = screenProvider.state;
 
-		if (this.resolution !== resolution && resolution === 'mobile') {
-			this.setVisibility(true);
-		} else if (this.resolution !== resolution && resolution === 'desktop') {
-			this.resolution = resolution;
-			this.scroll();
-		}
+		this.checkVisibility(resolution, scrollY);
+	}
 
-		const widthBreakPoint = getWidthBreakPoint();
-		const heightBreakPoint = getHeightBreakPoint();
-
+	private onChangeWidthBreakPoint(widthBreakPoint: TWidthBreakPoint): void {
 		if (
 			this.opened && widthBreakPoint === 'mobile-l' ||
-			this.opened && widthBreakPoint === 'mobile-p' ||
-			this.opened && heightBreakPoint !== 'default'
+			this.opened && widthBreakPoint === 'mobile-p'
 		) {
 			document.body.style.overflowY = 'hidden';
-		} else {
-			document.body.style.overflowY = 'auto';
-		}
-
-		this.resolution = resolution;
-	}
-
-	private scroll() {
-		const scrollPosition = window.scrollY;
-
-		if (scrollPosition > this.headerNavigation.offsetTop + this.headerNavigation.clientHeight) {
-			if (this.resolution !== 'mobile' && !this.visible) {
-				this.setVisibility(true);
-			}
-		} else if (scrollPosition <= this.headerNavigation.offsetTop + this.headerNavigation.clientHeight) {
-			if (this.resolution !== 'mobile' && this.visible) {
-				this.setVisibility(false);
-			}
 		}
 	}
 
-	private setEvents() {
+	private onChangeHeightBreakPoint(heightBreakPoint: THeightBreakPoint): void {
+		if (this.opened && heightBreakPoint !== 'default') {
+			document.body.style.overflowY = 'hidden';
+		}
+	}
+
+	private onChangeScrollY(scrollY: number) {
+		const { resolution } = screenProvider.state;
+
+		this.checkVisibility(resolution, scrollY);
+	}
+
+	private setEvents(): void {
 		this.openBtn.addEventListener('click', this.open);
 		this.closeBtn.addEventListener('click', this.close);
-
 		this.backBtn.addEventListener('click', this.back);
 
-		DEvents.resize.add(this.resize);
-		DEvents.scroll.add(this.scroll);
+		screenProvider.on('resolution', this.onChangeResolution);
+		screenProvider.on('widthBreakPoint', this.onChangeWidthBreakPoint);
+		screenProvider.on('heightBreakPoint', this.onChangeHeightBreakPoint);
+		screenProvider.on('scrollY', this.onChangeScrollY);
 	}
 
-	public removeEvents() {
+	public removeEvents(): void {
 		this.openBtn.removeEventListener('click', this.open);
 		this.closeBtn.removeEventListener('click', this.close);
-
 		this.backBtn.removeEventListener('click', this.back);
 
 		for (const l of this.linkListeners) {
 			l.el.removeEventListener('click', l.listener);
 		}
 
-		DEvents.resize.remove(this.resize);
-		DEvents.scroll.remove(this.scroll);
+		screenProvider.off('resolution', this.onChangeResolution);
+		screenProvider.off('widthBreakPoint', this.onChangeWidthBreakPoint);
+		screenProvider.off('heightBreakPoint', this.onChangeHeightBreakPoint);
+		screenProvider.off('scrollY', this.onChangeScrollY);
 	}
 
-	destroy() {
+	destroy(): void {
 		this.removeEvents();
 	}
 }

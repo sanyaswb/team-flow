@@ -1,10 +1,17 @@
 // components
 import { BurgerComponent } from './scripts/components/burger-component';
 
-const components = {
-	burger: new BurgerComponent()
-}
+// providers
+import { RootProvider } from './scripts/providers/root-provider';
 
-for (const c of Object.keys(components)) {
-	components[c].init();
-}
+(function(){
+	RootProvider.init();
+
+	const components = {
+		burger: new BurgerComponent()
+	}
+
+	for (const c of Object.keys(components)) {
+		components[c].init();
+	}
+})();

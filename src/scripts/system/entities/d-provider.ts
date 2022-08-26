@@ -21,12 +21,12 @@ export class DProvider<IState extends {}> {
 
 				if (old !== value && typeof old !== 'object' && typeof old !== 'function') {
 					for (const l of self.listeners[prop]) {
-						l(prop);
+						l(value);
 					}
 				} else if (typeof old === 'object' || typeof old === 'function') {
 					if (JSON.stringify(old) === JSON.stringify(value)) {
 						for (const l of self.listeners[prop]) {
-							l(prop);
+							l(value);
 						}
 					}
 				}
@@ -36,12 +36,14 @@ export class DProvider<IState extends {}> {
 		});
 	}
 
-	protected init() {
+	public init() {
 		//
 	}
 
 	public destroy() {
-		//
+		for (const key of Object.getOwnPropertyNames(this.listeners)) {
+			this.listeners[key] = [];
+		}
 	}
 
 	public on(prop: keyof IState, listener: (value: any) => void) {

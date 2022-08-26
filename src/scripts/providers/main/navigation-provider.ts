@@ -1,22 +1,15 @@
-import { DProvider } from '../system/entities/d-provider';
+// entities
+import { DProvider } from '../../system/entities/d-provider';
 
-export interface ILink {
-	text: string;
-	href: string;
-	childLinks?: ILink[];
-}
+// interfaces
+import { ILink } from '../../interfaces/providers';
 
-export interface INavigationProviderState {
+
+interface INavigationProviderState {
 	headerLinks: ILink[];
 }
 
-class NavigationProvider extends DProvider<INavigationProviderState> {
-	constructor(state: INavigationProviderState) {
-		super(state);
-	}
-}
-
-export default new NavigationProvider({
+const state: INavigationProviderState = {
 	headerLinks: [
 		{
 			text: 'Product',
@@ -103,4 +96,10 @@ export default new NavigationProvider({
 			href: '#pricing'
 		}
 	]
-});
+};
+
+export class NavigationProvider extends DProvider<INavigationProviderState> {
+	constructor() {
+		super(state);
+	}
+}
