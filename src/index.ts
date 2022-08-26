@@ -3,11 +3,13 @@ import { BurgerComponent } from './scripts/components/burger-component';
 
 // providers
 import { RootProvider } from './scripts/providers/root-provider';
+import { HeaderComponent } from './scripts/components/header-component';
 
 (function(){
 	RootProvider.init();
 
 	const components = {
+		header: new HeaderComponent(),
 		burger: new BurgerComponent()
 	}
 

@@ -1,10 +1,12 @@
 import { ScreenProvider } from './main/screen-provider';
 import { NavigationProvider } from './main/navigation-provider';
+import { TestimonialsProvider } from './main/testimonials-provider';
 
 export class RootProvider {
 	public static providers = {
 		screen: new ScreenProvider(),
-		navigation: new NavigationProvider()
+		navigation: new NavigationProvider(),
+		testimonials: new TestimonialsProvider()
 	}
 
 	public static init() {
@@ -22,3 +24,4 @@ export class RootProvider {
 
 export const screenProvider = RootProvider.providers.screen;
 export const navigationProvider = RootProvider.providers.navigation;
+export const testimonialsProvider = RootProvider.providers.testimonials;
