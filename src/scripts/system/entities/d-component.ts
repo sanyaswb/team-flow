@@ -1,4 +1,9 @@
-export abstract class DComponent {
-	public abstract init(): void;
-	public abstract destroy(): void;
+export class DComponent {
+	public init(): void {
+		//
+	}
+
+	public destroy(): void {
+		//
+	}
 }

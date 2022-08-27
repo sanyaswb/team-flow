@@ -1,9 +1,8 @@
 // entities
-import { DProvider } from '../../system/entities/d-provider';
+import { DProvider } from '@d-entities/d-provider';
 
 // interfaces
-import { ILink } from '../../interfaces/providers';
-
+import { ILink } from '@interfaces/providers';
 
 interface INavigationProviderState {
 	headerLinks: ILink[];

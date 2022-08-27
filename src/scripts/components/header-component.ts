@@ -1,11 +1,11 @@
 // entities
-import { DComponent } from '../system/entities/d-component';
+import { DComponent } from '@d-entities/d-component';
 
 // providers
-import { testimonialsProvider } from '../providers/root-provider';
+import { testimonialsProvider } from '@providers/root-provider';
 
 // interfaces
-import { IReviewer } from '../interfaces/providers';
+import { IReviewer } from '@interfaces/providers';
 
 export class HeaderComponent extends DComponent {
 	private readonly headerAside: HTMLElement;

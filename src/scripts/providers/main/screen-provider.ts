@@ -1,8 +1,8 @@
 // interfaces
-import { THeightBreakPoint, TResolution, TWidthBreakPoint } from '../../interfaces/screen';
+import { THeightBreakPoint, TResolution, TWidthBreakPoint } from '@interfaces/screen';
 
 // entities
-import { DProvider } from '../../system/entities/d-provider';
+import { DProvider } from '@d-entities/d-provider';
 
 interface IScreenProviderState {
 	width: number;

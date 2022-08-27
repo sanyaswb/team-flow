@@ -1,6 +1,7 @@
-import { ScreenProvider } from './main/screen-provider';
-import { NavigationProvider } from './main/navigation-provider';
-import { TestimonialsProvider } from './main/testimonials-provider';
+// providers
+import { ScreenProvider } from '@providers/main/screen-provider';
+import { NavigationProvider } from '@providers/main/navigation-provider';
+import { TestimonialsProvider } from '@providers/main/testimonials-provider';
 
 export class RootProvider {
 	public static providers = {

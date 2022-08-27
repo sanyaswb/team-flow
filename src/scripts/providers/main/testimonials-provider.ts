@@ -1,12 +1,12 @@
 // entities
-import { DProvider } from '../../system/entities/d-provider';
+import { DProvider } from '@d-entities/d-provider';
 
 // images
-import lucy_niana from '../../../assets/images/testimonials/lucy-niana.png';
-import mark_anderson from '../../../assets/images/testimonials/mark-anderson.png';
+import lucy_niana from '@assets/images/testimonials/lucy-niana.png';
+import mark_anderson from '@assets/images/testimonials/mark-anderson.png';
 
 // interfaces
-import { IReviewer } from '../../interfaces/providers';
+import { IReviewer } from '@interfaces/providers';
 
 interface ITestimonialsProviderState {
 	reviewers: IReviewer[];

@@ -2,14 +2,14 @@
 import { v4 as getId } from 'uuid';
 
 // system
-import { DComponent } from '../system/entities/d-component';
+import { DComponent } from '@d-entities/d-component';
 
 // interfaces
-import { THeightBreakPoint, TResolution, TWidthBreakPoint } from '../interfaces/screen';
-import { ILink } from '../interfaces/providers';
+import { ILink } from '@interfaces/providers';
+import { TResolution, THeightBreakPoint, TWidthBreakPoint } from '@interfaces/screen';
 
 // providers
-import { navigationProvider, screenProvider } from '../providers/root-provider';
+import { navigationProvider, screenProvider } from '@providers/root-provider';
 
 interface IBlock {
 	id: string;
