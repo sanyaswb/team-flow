@@ -42,16 +42,29 @@
 		}
 
 		&_open {
-			top: 62px;
-			right: calc($padding-desktop-m - 5px);
+			top: 72px;
+			right: calc($padding-desktop-xl - 5px);
+
+			@include desktop-l {
+				right: calc($padding-desktop-l - 5px);
+			}
+
+			@include desktop-m {
+				right: calc($padding-desktop-m - 5px);
+			}
 
 			@include mobile-l {
+				top: 62px;
 				right: calc($padding-mobile-l - 5px);
 			}
 
 			@include mobile-p {
 				top: 32px;
 				right: calc($padding-mobile-p - 5px);
+			}
+
+			@include mobile-p-height {
+				right: calc($padding-mobile-l - 5px);
 			}
 
 			span {
@@ -96,11 +109,20 @@
 		}
 
 		&_close {
-			top: 62px;
+			top: 72px;
 			right: calc($padding-desktop-m - 10px);
 			display: none;
 
+			@include mobile-p-height {
+				right: calc($padding-mobile-l - 10px);
+			}
+
+			@include mobile-l-height {
+				right: calc($padding-mobile-p - 10px);
+			}
+
 			@include mobile-l {
+				top: 62px;
 				right: calc($padding-mobile-l - 10px);
 			}
 
@@ -164,10 +186,18 @@
 		background: #222;
 		width: 100%;
 		height: 100%;
-		padding: 60px $padding-desktop-m 60px $padding-desktop-m;
+		padding: 70px $padding-desktop-m 60px $padding-desktop-m;
 		transition: transform 150ms ease-in-out;
 		transform: translateX(100%);
 		overflow-y: auto;
+
+		@include mobile-p-height {
+			padding: 70px $padding-mobile-l 30px $padding-mobile-l;
+		}
+
+		@include mobile-l-height {
+			padding: 70px $padding-mobile-p 30px $padding-mobile-p;
+		}
 
 		@include mobile-l {
 			padding: 60px $padding-mobile-l 30px $padding-mobile-l;

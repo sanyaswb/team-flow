@@ -16,7 +16,7 @@
 
 	@include desktop-l {
 		min-height: 900px;
-		grid-template-columns: 630px 1fr;
+		grid-template-columns: 615px 1fr;
 		grid-column-gap: 20px;
 
 		@include wrapper(75px, $padding-desktop-l, 120px, $padding-desktop-l);
@@ -389,8 +389,8 @@
 		align-items: center;
 		gap: 30px;
 
-		@include desktop-m {
-			gap: 20px;
+		@include desktop-l {
+			gap: 10px;
 		}
 
 		.reviewer {
