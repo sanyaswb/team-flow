@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Space landing page",
   "main": "gulpfile.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "serve": "cross-env MODE=development gulp",
     "build": "cross-env MODE=production gulp"
