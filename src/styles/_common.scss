@@ -100,3 +100,21 @@ body {
 		}
 	}
 }
+
+.heading {
+	font-family: 'Nunito Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 48px;
+	letter-spacing: 1px;
+	color: #565656;
+	width: max-content;
+
+	& > span {
+		color: #ffca1d;
+		font-family: inherit;
+		font-weight: inherit;
+		font-size: inherit;
+		letter-spacing: inherit;
+	}
+}

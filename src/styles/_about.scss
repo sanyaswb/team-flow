@@ -1,0 +1,150 @@
+@import "styleLib/mixins";
+@import "styleLib/variables";
+
+.about {
+	width: 100%;
+
+	@include wrapper(40px, $padding-desktop-xl, 110px, $padding-desktop-xl, $desktop-xl-width);
+
+	@include desktop-l {
+		@include wrapper(40px, $padding-desktop-l, 110px, $padding-desktop-l);
+	}
+
+	@include desktop-m {
+		@include wrapper(40px, $padding-desktop-m, 60px, $padding-desktop-m);
+	}
+
+	@include mobile-l {
+		@include wrapper(40px, $padding-mobile-l, 30px, $padding-mobile-l);
+	}
+
+	@include mobile-p {
+		@include wrapper(30px, $padding-mobile-p, 30px, $padding-mobile-p);
+	}
+
+	&__heading {
+		margin: 0 auto 100px auto;
+
+		@include tablet {
+			margin: 0 auto 60px auto;
+		}
+
+		@include mobile-l {
+			margin: 0 auto 40px auto;
+		}
+	}
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		gap: 60px;
+
+		@include desktop-s {
+			flex-wrap: wrap;
+		}
+
+		@include mobile-l {
+			gap: 30px;
+		};
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: 420px;
+
+		@include desktop-l {
+			max-width: 380px;
+		}
+
+		@include desktop-s {
+			max-width: unset;
+			width: calc(50% - 30px);
+			display: grid;
+			grid-template-areas:
+			"image        title"
+			"description  description";
+			grid-template-columns: 100px 1fr;
+			grid-template-rows: 100px 1fr;
+			grid-column-gap: 60px;
+			grid-row-gap: 30px;
+		}
+
+		@include tablet {
+			grid-column-gap: 20px;
+			grid-row-gap: 10px;
+		}
+
+		@include mobile-l {
+			width: 100%;
+		}
+
+		@include mobile-p {
+			grid-template-columns: 60px 1fr;
+			grid-template-rows: 60px 1fr;
+		}
+	}
+
+	&__icon {
+		width: 100px;
+		margin-bottom: 50px;
+
+		@include desktop-s {
+			grid-area: image;
+			margin-bottom: 0;
+			width: 100%;
+		}
+	}
+
+	&__title {
+		font-family: 'Nunito Sans', sans-serif;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 24px;
+		letter-spacing: 1px;
+		color: #2B3377;
+		margin-bottom: 30px;
+
+		@include desktop-s {
+			grid-area: title;
+			margin-bottom: 0;
+			align-self: center;
+		}
+	}
+
+	&__description {
+		font-family: 'Nunito Sans', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 34px;
+		letter-spacing: 1px;
+		color: #585858;
+		text-align: center;
+
+		@include desktop-l {
+			letter-spacing: 0.5px;
+		}
+
+		@include desktop-s {
+			grid-area: description;
+			text-align: left;
+			max-width: 490px;
+		}
+
+		@include tablet {
+			letter-spacing: 0;
+		}
+
+		@include mobile-l {
+			letter-spacing: 1px;
+		}
+
+		@include mobile-p {
+			letter-spacing: 0.5px;
+			font-size: 18px;
+			line-height: 28px;
+		}
+	}
+}
