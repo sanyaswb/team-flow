@@ -112,6 +112,8 @@
 		}
 
 		&_close {
+			right: 60px;
+
 			@include mobile-p-height {
 				right: calc($padding-mobile-l);
 			}
