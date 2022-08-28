@@ -66,7 +66,7 @@ export class ScreenProvider extends DProvider<IScreenProviderState> {
 	}
 
 	private setResolution(width: number): void {
-		this.state.resolution = width <= 1024 ? 'mobile' : 'desktop';
+		this.state.resolution = width < 1024 ? 'mobile' : 'desktop';
 	}
 
 	private setWidthBreakPoint(width: number): void {

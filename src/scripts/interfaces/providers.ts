@@ -12,3 +12,9 @@ export interface IReviewer {
 	rating: number;
 	status: 'done' | 'pending';
 }
+
+export interface IBrandLink {
+	name: string;
+	image: string;
+	href: string;
+}

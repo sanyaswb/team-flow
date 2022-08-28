@@ -76,26 +76,6 @@
 			border-radius: 5px;
 			background-color: #FFCA1D;
 			color: #1F1F1F;
-
-			&:after {
-				content: '';
-				position: absolute;
-				left: 10px;
-				top: 50%;
-				transform: translateX(-50%) translateY(-50%);
-				background-color: transparent;
-				border-radius: 50%;
-				width: 8px;
-				height: 8px;
-			}
-
-			&:hover {
-				background: rgba(255, 255, 255, .3);
-			}
-
-			&:hover:after {
-				background-color: #FFCA1D;
-			}
 		}
 
 		& > li:not(:last-child) {
@@ -116,25 +96,8 @@
 	}
 
 	&__login-button {
-		display: block;
-		border: none;
-		background-color: transparent;
-		border-radius: 10px;
-		font-family: "Nunito Sans", sans-serif;
-		font-size: 24px;
-		font-weight: 600;
-		color: #757575;
-		padding: 15px 42px;
-		cursor: pointer;
-		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border 0.2s ease-in-out;
-
 		@include desktop-s {
 			color: #eee;
 		}
-	}
-
-	&__login-button:hover {
-		background-color: #FFCA1D;
-		color: #1F1F1F;
 	}
 }

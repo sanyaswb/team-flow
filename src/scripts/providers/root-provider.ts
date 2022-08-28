@@ -2,12 +2,14 @@
 import { ScreenProvider } from '@providers/main/screen-provider';
 import { NavigationProvider } from '@providers/main/navigation-provider';
 import { TestimonialsProvider } from '@providers/main/testimonials-provider';
+import { BrandsProvider } from '@providers/main/brands-provider';
 
 export class RootProvider {
 	public static providers = {
 		screen: new ScreenProvider(),
 		navigation: new NavigationProvider(),
-		testimonials: new TestimonialsProvider()
+		testimonials: new TestimonialsProvider(),
+		brands: new BrandsProvider()
 	}
 
 	public static init() {
@@ -26,3 +28,4 @@ export class RootProvider {
 export const screenProvider = RootProvider.providers.screen;
 export const navigationProvider = RootProvider.providers.navigation;
 export const testimonialsProvider = RootProvider.providers.testimonials;
+export const brandsProvider = RootProvider.providers.brands;

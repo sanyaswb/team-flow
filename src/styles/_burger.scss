@@ -4,32 +4,59 @@
 .burger {
 	position: fixed;
 	top: 0;
-	right: 0;
+	right: -500px;
 	width: 500px;
 	max-height: 100vh;
-	z-index: 999;
+	z-index: 998;
 
 	@include mobile-l {
 		width: 100%;
-		left: 0;
+		right: unset;
+		left: 100%;
 		bottom: 0;
 	}
 
 	@include mobile-p-height {
 		width: 100%;
-		left: 0;
+		right: unset;
+		left: 100%;
 		bottom: 0;
 	}
 
 	&__toggle {
-		position: absolute;
-		display: block;
-		width: 50px;
-		height: 40px;
+		position: fixed;
+		display: none;
+		width: 60px;
+		height: 50px;
 		background: transparent;
 		cursor: pointer;
-		border: none;
-		z-index: 2;
+		border: 4px solid #FFCA1D;
+		border-radius: 3px;
+		top: 58px;
+		right: calc($padding-desktop-xl);
+		z-index: 999;
+		transition: border 150ms ease-in-out;
+
+		@include desktop-l {
+			right: calc($padding-desktop-l);
+		}
+
+		@include desktop-m {
+			right: calc($padding-desktop-m);
+		}
+
+		@include mobile-l {
+			right: calc($padding-mobile-l);
+		}
+
+		@include mobile-p {
+			top: 28px;
+			right: calc($padding-mobile-p);
+		}
+
+		@include mobile-p-height {
+			right: calc($padding-mobile-l);
+		}
 
 		span {
 			display: block;
@@ -39,36 +66,12 @@
 			height: 4px;
 			border-radius: 4px;
 			background: #FFCA1D;
+			transition: background 150ms ease-in-out;
 		}
 
 		&_open {
-			top: 72px;
-			right: calc($padding-desktop-xl - 5px);
-
-			@include desktop-l {
-				right: calc($padding-desktop-l - 5px);
-			}
-
-			@include desktop-m {
-				right: calc($padding-desktop-m - 5px);
-			}
-
-			@include mobile-l {
-				top: 62px;
-				right: calc($padding-mobile-l - 5px);
-			}
-
-			@include mobile-p {
-				top: 32px;
-				right: calc($padding-mobile-p - 5px);
-			}
-
-			@include mobile-p-height {
-				right: calc($padding-mobile-l - 5px);
-			}
-
 			span {
-				right: 5px;
+				right: 6px;
 				top: 50%;
 				transition: width 150ms ease-in-out;
 			}
@@ -109,32 +112,20 @@
 		}
 
 		&_close {
-			top: 72px;
-			right: calc($padding-desktop-m - 10px);
-			display: none;
-
 			@include mobile-p-height {
-				right: calc($padding-mobile-l - 10px);
+				right: calc($padding-mobile-l);
 			}
 
 			@include mobile-l-height {
-				right: calc($padding-mobile-p - 10px);
+				right: calc($padding-mobile-p);
 			}
 
 			@include mobile-l {
-				top: 62px;
-				right: calc($padding-mobile-l - 10px);
+				right: calc($padding-mobile-l);
 			}
 
 			@include mobile-p {
-				top: 32px;
-				right: calc($padding-mobile-p - 10px);
-			}
-
-			&:hover {
-				span {
-					background: #eb7f1d;
-				}
+				right: calc($padding-mobile-p);
 			}
 
 			span {
@@ -157,22 +148,26 @@
 			display: block;
 		}
 
-		&_hidden {
-			display: none;
+		&:hover {
+			border: 4px solid #eb7f1d;
+
+			span {
+				background: #eb7f1d;
+			}
 		}
 	}
 
 	&_opened {
-		transform: translateX(0);
-	}
+		right: 0;
 
-	&_opened {
-		.burger__toggle_open {
-			display: none;
+		@include mobile-p-height {
+			right: unset;
+			left: 0;
 		}
 
-		.burger__toggle_close {
-			display: block;
+		@include mobile-l {
+			right: unset;
+			left: 0;
 		}
 
 		.burger__menu {
@@ -186,7 +181,7 @@
 		background: #222;
 		width: 100%;
 		height: 100%;
-		padding: 70px $padding-desktop-m 60px $padding-desktop-m;
+		padding: 60px $padding-desktop-m 60px $padding-desktop-m;
 		transition: transform 150ms ease-in-out;
 		transform: translateX(100%);
 		overflow-y: auto;
@@ -209,7 +204,7 @@
 	}
 
 	&__logo {
-		margin-bottom: 10px;
+		margin-bottom: 20px;
 	}
 
 	&__search {

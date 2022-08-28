@@ -212,6 +212,8 @@ export class BurgerComponent extends DComponent {
 		}
 
 		this.menu.classList.add('burger_opened');
+		this.openBtn.classList.remove('burger__toggle_visible');
+		this.closeBtn.classList.add('burger__toggle_visible');
 
 		const { widthBreakPoint, heightBreakPoint } = screenProvider.state;
 
@@ -232,6 +234,8 @@ export class BurgerComponent extends DComponent {
 		}
 
 		this.menu.classList.remove('burger_opened');
+		this.closeBtn.classList.remove('burger__toggle_visible');
+		this.openBtn.classList.add('burger__toggle_visible');
 
 		document.body.style.overflowY = 'auto';
 
@@ -252,9 +256,13 @@ export class BurgerComponent extends DComponent {
 	private setVisibility(value: boolean): void {
 		if (value) {
 			this.menu.style.display = 'flex';
+			if (!this.opened) {
+				this.openBtn.classList.add('burger__toggle_visible');
+			}
 		} else {
 			this.menu.style.display = 'none';
 			this.closeBtn.click();
+			this.openBtn.classList.remove('burger__toggle_visible');
 		}
 
 		this.visible = value;

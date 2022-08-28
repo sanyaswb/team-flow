@@ -1,0 +1,174 @@
+@import "styleLib/variables";
+@import "styleLib/mixins";
+
+.brands {
+	@include wrapper($padding-desktop-l, 120px, $padding-desktop-l, 120px);
+
+	padding-top: 120px;
+	padding-bottom: 120px;
+	display: grid;
+	grid-template-columns: 1fr calc(150px * 4 + 90px * 3);
+	width: 100%;
+
+	@include desktop-l {
+		grid-template-columns: 1fr calc(150px * 4 + 30px * 3);
+
+		@include wrapper(75px, $padding-desktop-l, 120px, $padding-desktop-l);
+	}
+
+	@include desktop-m {
+		grid-template-columns: 1fr calc(150px * 3 + 30px * 2);
+
+		@include wrapper(60px, $padding-desktop-m, 60px, $padding-desktop-m);
+	}
+
+	@include desktop-s {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	@include mobile-l {
+		@include wrapper(60px, $padding-mobile-l, 30px, $padding-mobile-l);
+	}
+
+	@include mobile-p {
+		@include wrapper(60px, $padding-mobile-p, 30px, $padding-mobile-p);
+	}
+
+	&__description {
+		position: relative;
+		font-family: 'Nunito Sans', sans-serif;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 30px;
+		line-height: 44px;
+		letter-spacing: 1px;
+		width: 534px;
+		justify-self: start;
+		align-self: center;
+
+		@include desktop-m {
+			width: 455px;
+		}
+
+		@include desktop-s {
+			width: 100%;
+			margin-bottom: 30px;
+		}
+
+		@include mobile-l {
+			letter-spacing: 0;
+			font-size: 28px;
+		}
+
+		@include mobile-p {
+			font-size: 24px;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: -18px;
+			left: 0;
+			width: 70px;
+			height: 6px;
+			background: #FFCA1D;
+			border-radius: 6px
+		}
+	}
+
+	&__container {
+		justify-self: end;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: 90px;
+		width: 100%;
+		overflow-x: auto;
+		padding-bottom: 20px;
+
+		@include desktop-l {
+			gap: 30px;
+		}
+
+		@include mobile-l {
+			gap: 20px;
+		}
+	}
+
+	&__link {
+		position: relative;
+		display: block;
+
+		.brands__image {
+			max-width: 150px;
+
+			@include mobile-l {
+				max-width: 120px;
+			}
+		}
+
+		.brands__image_normal {
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+
+			@include mobile-l {
+				opacity: 1;
+			}
+		}
+
+		.brands__image_bw {
+			filter: grayscale(1);
+			opacity: 1;
+
+			@include mobile-l {
+				opacity: 0;
+			}
+		}
+
+		&:hover {
+			.brands__image_normal {
+				opacity: 1;
+			}
+
+			.brands__image_bw {
+				opacity: 0;
+			}
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		gap: 30px;
+	}
+
+	::-webkit-scrollbar {
+		height: 7px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: rgba(108, 113, 161, 0.6);
+		border-radius: 5px;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #555;
+		border-radius: 5px;
+		border: 1px solid rgba(200, 200, 200, 0.8);
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
+}

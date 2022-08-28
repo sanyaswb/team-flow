@@ -1,16 +1,18 @@
 // components
-import { BurgerComponent } from './scripts/components/burger-component';
+import { BurgerComponent } from '@components/burger-component';
+import { HeaderComponent } from '@components/header-component';
+import { BrandsComponent } from '@components/brands-component';
 
 // providers
-import { RootProvider } from './scripts/providers/root-provider';
-import { HeaderComponent } from './scripts/components/header-component';
+import { RootProvider } from '@providers/root-provider';
 
 (function(){
 	RootProvider.init();
 
 	const components = {
 		header: new HeaderComponent(),
-		burger: new BurgerComponent()
+		burger: new BurgerComponent(),
+		brands: new BrandsComponent()
 	}
 
 	for (const c of Object.keys(components)) {
