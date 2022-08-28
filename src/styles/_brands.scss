@@ -8,11 +8,7 @@ padding-top: 120px;
 	grid-template-columns: 1fr calc(150px * 4 + 90px * 3);
 	width: 100%;
 
-	@include wrapper(75px, $padding-desktop-xl, 200px, $padding-desktop-xl, $desktop-xl-width);
-
-	@include desktop-xl {
-		@include wrapper($padding-desktop-xl, 120px, $padding-desktop-xl, 120px, $desktop-xl-width);
-	}
+	@include wrapper(120px, $padding-desktop-xl, 120px, $padding-desktop-xl, $desktop-xl-width);
 
 	@include desktop-l {
 		grid-template-columns: 1fr calc(150px * 4 + 30px * 3);
