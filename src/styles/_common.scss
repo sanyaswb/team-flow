@@ -118,3 +118,79 @@ body {
 		letter-spacing: inherit;
 	}
 }
+
+.section-title {
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 59px;
+	letter-spacing: 1px;
+	color: #4A4A4A;
+	position: relative;
+
+	@include desktop-s {
+		letter-spacing: 0.5px;
+		font-size: 36px;
+		line-height: 50px;
+	}
+
+	@include tablet {
+		letter-spacing: 1px;
+		font-size: 40px;
+		line-height: 59px;
+	}
+
+	@include mobile-l {
+		letter-spacing: 0.5px;
+		font-size: 36px;
+		line-height: 50px;
+	}
+
+	@include mobile-p {
+		letter-spacing: 0;
+		font-size: 30px;
+		line-height: 35px;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: -20px;
+		left: 0;
+		width: 70px;
+		height: 6px;
+		background: #FFCA1D;
+		border-radius: 6px;
+	}
+}
+
+.section-text {
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 38px;
+	letter-spacing: 1px;
+	color: #575757;
+
+	@include desktop-s {
+		font-size: 20px;
+		letter-spacing: 0.5px;
+	}
+
+	@include tablet {
+		font-size: 24px;
+		letter-spacing: 1px;
+	}
+
+	@include mobile-l {
+		font-size: 20px;
+		letter-spacing: 0.5px;
+		line-height: 30px;
+	}
+
+	@include mobile-p {
+		font-size: 16px;
+		letter-spacing: 0;
+		line-height: 25px;
+	}
+}
