@@ -21,10 +21,8 @@ export class HeaderComponent extends DComponent {
 	}
 
 	private fillTestimonials(): void {
-		const reviewers = testimonialsProvider.state.reviewers;
-
-		this.fillReviewer(reviewers[0], this.headerAside.querySelector('.header__reviewer_normal'));
-		this.fillReviewer(reviewers[1], this.headerAside.querySelector('.header__reviewer_reversed'));
+		this.fillReviewer(testimonialsProvider.getRandomReviewer(), this.headerAside.querySelector('.header__reviewer_normal'));
+		this.fillReviewer(testimonialsProvider.getRandomReviewer(), this.headerAside.querySelector('.header__reviewer_reversed'));
 	}
 
 	fillReviewer(data: IReviewer, selector: HTMLElement): void {

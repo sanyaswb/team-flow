@@ -1,0 +1,137 @@
+@import "styleLib/variables";
+@import "styleLib/mixins";
+@import "svg/features-svg";
+
+.features {
+	@include wrapper(40px, $padding-desktop-xl, 100px, $padding-desktop-xl, $desktop-xl-width);
+
+	@include desktop-l {
+		@include wrapper(40px, $padding-desktop-l, 100px, $padding-desktop-l);
+	}
+
+	@include desktop-m {
+		@include wrapper(40px, $padding-desktop-m, 100px, $padding-desktop-m);
+	}
+
+	@include mobile-l {
+		@include wrapper(40px, $padding-mobile-l, 100px, $padding-mobile-l);
+	}
+
+	@include mobile-p {
+		@include wrapper(40px, $padding-mobile-p, 40px, $padding-mobile-p);
+	}
+
+	width: 100%;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 680px 1fr;
+	grid-column-gap: 70px;
+
+	@include desktop-l {
+		grid-template-columns: 640px 1fr;
+		grid-column-gap: 50px;
+	}
+
+	@include desktop-m {
+		grid-template-columns: 580px 1fr;
+		grid-column-gap: 40px;
+	}
+
+	@include desktop-s {
+		grid-template-columns: 500px 1fr;
+	}
+
+	@include tablet {
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	&__features-svg {
+		width: 100%;
+	}
+
+	&__content {
+		justify-self: end;
+		align-self: center;
+	}
+
+	&__title {
+		font-family: 'Nunito Sans', sans-serif;
+		font-weight: 700;
+		font-size: 40px;
+		line-height: 59px;
+		letter-spacing: 1px;
+		color: #4A4A4A;
+		position: relative;
+		margin-bottom: 43px;
+		max-width: 570px;
+
+		@include desktop-s {
+			letter-spacing: 0.5px;
+			font-size: 36px;
+			line-height: 50px;
+		}
+
+		@include tablet {
+			letter-spacing: 1px;
+			font-size: 40px;
+			line-height: 59px;
+		}
+
+		@include mobile-l {
+			letter-spacing: 0.5px;
+			font-size: 36px;
+			line-height: 50px;
+		}
+
+		@include mobile-p {
+			letter-spacing: 0;
+			font-size: 30px;
+			line-height: 35px;
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: -20px;
+			left: 0;
+			width: 70px;
+			height: 6px;
+			background: #FFCA1D;
+			border-radius: 6px;
+		}
+	}
+
+	&__text {
+		font-family: 'Nunito Sans', sans-serif;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 38px;
+		letter-spacing: 1px;
+		color: #575757;
+		max-width: 750px;
+
+		@include desktop-s {
+			font-size: 20px;
+			letter-spacing: 0.5px;
+		}
+
+		@include tablet {
+			font-size: 24px;
+			letter-spacing: 1px;
+		}
+
+		@include mobile-l {
+			font-size: 20px;
+			letter-spacing: 0.5px;
+			line-height: 30px;
+		}
+
+		@include mobile-p {
+			font-size: 16px;
+			letter-spacing: 0;
+			line-height: 25px;
+		}
+	}
+}

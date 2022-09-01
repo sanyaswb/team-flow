@@ -11,6 +11,9 @@ export interface IReviewer {
 	photo: string;
 	rating: number;
 	status: 'done' | 'pending';
+	position: string;
+	message: string;
+	online: boolean;
 }
 
 export interface IBrandLink {

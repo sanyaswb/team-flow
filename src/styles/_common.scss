@@ -1,7 +1,7 @@
 @import "styleLib/mixins";
 
 body {
-	min-height: 200vh;
+	overflow-x: hidden;
 }
 
 .cover {
@@ -108,7 +108,7 @@ body {
 	font-size: 48px;
 	letter-spacing: 1px;
 	color: #565656;
-	width: max-content;
+	text-align: center;
 
 	& > span {
 		color: #ffca1d;
