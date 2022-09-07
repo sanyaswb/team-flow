@@ -1,0 +1,45 @@
+.automations-svg {
+	position: relative;
+	padding-top: 100%;
+
+	svg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+
+	&__circle {
+		stroke: #D7D7EB;
+		stroke-width: 2px;
+
+		&_first {
+			stroke: #D7D7EB;
+			stroke-dasharray: 10;
+		}
+
+		&_second {
+			stroke-width: 6px;
+			stroke: #EAF0FC;
+			stroke-dasharray: 350;
+			stroke-dashoffset: 1490;
+		}
+	}
+
+	&__circle-deco {
+		&_first {
+			fill: #64B7F3;
+		}
+
+		&_second {
+			fill: #EC7B4A;
+		}
+
+		&_third {
+			fill: #F3648F;
+		}
+	}
+}

@@ -8,11 +8,11 @@
 	}
 
 	@include desktop-m {
-		@include wrapper(40px, $padding-desktop-m, 100px, $padding-desktop-m);
+		@include wrapper(40px, $padding-desktop-m, 80px, $padding-desktop-m);
 	}
 
 	@include mobile-l {
-		@include wrapper(40px, $padding-mobile-l, 100px, $padding-mobile-l);
+		@include wrapper(40px, $padding-mobile-l, 40px, $padding-mobile-l);
 	}
 
 	@include mobile-p {
