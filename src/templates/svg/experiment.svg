@@ -1,0 +1,50 @@
+<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<clipPath id="svgHexagonClip">
+			<path d="M 70 10
+	     A 20 20 0 0 1 90 0
+	     L 230 0
+	     A 20 20 0 0 1 250 10
+	     L 310 150
+	     A 20 20 0 0 1 310 170
+	     L 250 310
+	     A 20 20 0 0 1 230 320
+	     L 90 320
+	     A 20 20 0 0 1 70 310
+	     L 10 170
+	     A 20 20 0 0 1 10 150
+	     z" fill="green" stroke-width="2" fill-opacity="0.5"
+			/>
+		</clipPath>
+	</defs>
+
+	<rect width="300" height="300" x="10" y="10" stroke="#000" stroke-width="3" fill="none"></rect>
+	<path d="M 70 10
+	     A 20 20 0 0 1 90 0
+	     L 230 0
+	     A 20 20 0 0 1 250 10
+	     L 317.5 150
+	     A 20 20 0 0 1 317.5 170
+	     L 250 310
+	     A 20 20 0 0 1 230 320
+	     L 90 320
+	     A 20 20 0 0 1 70 310
+	     L 2.5 170
+	     A 20 20 0 0 1 2.5 150
+	     z" fill="#fff"
+	/>
+	<path d="M 80 20
+     A 20 20 0 0 1 100 10
+     L 220 10
+     A 20 20 0 0 1 240 20
+     L 305 150
+     A 20 20 0 0 1 305 170
+     L 240 300
+     A 20 20 0 0 1 220 310
+     L 100 310
+     A 20 20 0 0 1 80 300
+     L 15 170
+     A 20 20 0 0 1 15 150
+     z" fill="none" stroke-width="4" stroke="#000"
+	/>
+</svg>

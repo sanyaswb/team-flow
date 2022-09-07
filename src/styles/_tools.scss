@@ -1,0 +1,171 @@
+@import "styleLib/mixins";
+
+.tools {
+	@include wrapper(160px, $padding-desktop-xl, 170px, $padding-desktop-xl, $desktop-xl-width);
+
+	@include desktop-l {
+		@include wrapper(40px, $padding-desktop-l, 100px, $padding-desktop-l);
+	}
+
+	@include desktop-m {
+		@include wrapper(40px, $padding-desktop-m, 100px, $padding-desktop-m);
+	}
+
+	@include mobile-l {
+		@include wrapper(40px, $padding-mobile-l, 100px, $padding-mobile-l);
+	}
+
+	@include mobile-p {
+		@include wrapper(40px, $padding-mobile-p, 40px, $padding-mobile-p);
+	}
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__heading {
+		max-width: 760px;
+		margin-bottom: 100px;
+
+		@include tablet {
+			margin-bottom: 60px;
+			max-width: 520px;
+		}
+
+		@include mobile-l {
+			max-width: 380px;
+		}
+	}
+
+	&__list {
+		display: flex;
+		gap: 90px;
+		width: 1260px;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 100px;
+		position: relative;
+
+		@include desktop-m {
+			gap: 70px;
+			width: 980px;
+		}
+
+		@include desktop-s {
+			gap: 50px;
+			width: 900px;
+		}
+
+		@include tablet {
+			width: 520px;
+			margin-bottom: 60px;
+		}
+
+		@include mobile-l {
+			gap: 40px;
+			width: 380px;
+		}
+
+		@include mobile-p {
+			gap: 20px;
+			width: 250px;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 210px;
+			top: -46px;
+			width: 16px;
+			height: 16px;
+			background-color: #0061FF;
+			border-radius: 50%;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			right: 226px;
+			bottom: -136px;
+			width: 20px;
+			height: 20px;
+			background-color: #0061FF;
+			border-radius: 50%;
+
+			@include tablet {
+				right: 25%;
+				bottom: -40px;
+			}
+		}
+	}
+
+	&__item {
+		width: 180px;
+		height: 180px;
+		border-radius: 20px;
+		background: #f5f6f8;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: box-shadow 200ms ease-in-out;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: 0 0 30px 0 rgba(0,0,0,0.1);
+		}
+
+		@include desktop-m {
+			width: 140px;
+			height: 140px;
+		}
+
+		@include mobile-l {
+			width: 100px;
+			height: 100px;
+		}
+
+		@include mobile-p {
+			width: 70px;
+			height: 70px;
+		}
+
+		div {
+			width: 50%;
+			height: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			clip-path: url("#svgHexagonClipInner");
+			background: #fff;
+
+			img {
+				width: calc(100% - 8px);
+				height: calc(100% - 8px);
+				clip-path: url("#svgHexagonClipInner");
+			}
+		}
+	}
+
+	&__hexagon-svg {
+		width: 100px;
+	}
+
+	&__button {
+		width: 230px;
+		height: 70px;
+
+		@include mobile-l {
+			width: 200px;
+			height: 60px;
+		}
+	}
+}
+
+#svgHexagonClipInner {
+	transform-origin: center;
+	transform: scale(0.003125);
+
+	path {
+		transform: translateX(320px) rotate(90deg);
+	}
+}

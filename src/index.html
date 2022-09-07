@@ -10,12 +10,16 @@
 		<link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
 	</head>
 	<body>
+		<div class="svg-defs">
+			@@include('./templates/svg/hexagon-defs.html', {})
+		</div>
 		<div class="cover" id="cover"></div>
 		@@include('./templates/header.html', {})
 		@@include('./templates/brands.html', {})
 		@@include('./templates/about.html', {})
 		@@include('./templates/features.html', {})
 		@@include('./templates/set-up.html', {})
+		@@include('./templates/tools.html', {})
 		<script src="./index.min.js"></script>
 	</body>
 </html>

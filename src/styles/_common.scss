@@ -4,6 +4,15 @@ body {
 	overflow-x: hidden;
 }
 
+.svg-defs {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: -100vh;
+	left: 0;
+	transform: translateX(-100px);
+}
+
 .cover {
 	position: fixed;
 	top: 0;
@@ -116,6 +125,16 @@ body {
 		font-weight: inherit;
 		font-size: inherit;
 		letter-spacing: inherit;
+	}
+
+	@include mobile-l {
+		font-size: 36px;
+		letter-spacing: 0.5px;
+	}
+
+	@include mobile-p {
+		font-size: 32px;
+		letter-spacing: 0;
 	}
 }
 
